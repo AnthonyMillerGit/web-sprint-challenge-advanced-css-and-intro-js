@@ -207,6 +207,13 @@ export const artists = [
 Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
+
+
+/*Task 1 notes: the artists array above is a list of objects. when i console log "artists" it will access the array and when i put [] next to it, it is dictating which index, or which "artist" it wants to access. In javascript array index always starts with 0. So 0 is the first item in an array, 1 is the second item etc. In part two i am console logging the information stored in the array titled "artists" at the second index (so third object in the list)and i am specifing that i want to console log the information stored in the "bio" key in that object by writing .bio after accessing the 3rd artist in the array*/
+
+
+
+
 //(1) Name of the first artist (0th index) in the array
 console.log(artists[0])
 
@@ -217,6 +224,12 @@ console.log(artists[2].bio)
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
+
+
+/* Task 2 Notes: Here i am accessing the information in the array "artists" in the 8th index (so the 9th item in the array), and i am specifically accessing the key in that object named "name" by .name after the artists[8] specification. The name in that object is spelled wrong so i wanted to update what the value in that key to reflect the correct spelling of the name. This is done easily by just setting the specified key and using "=" to update is value. I than console logged my work to make sure that the update of information took place and it did. */
+
+
+
 artists[8].name = "Vincent Van Gogh"
 console.log(artists[8])
 
@@ -228,6 +241,12 @@ console.log(artists[8])
  3. Return a string in the format `the artist at index {id} is {name}`
  
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
+
+
+/*Task 3 Notes: Here i am writing a function that takes in two parameters. One which could be any array, in this case it will be the "artists" array we are working with. The next one will be the specific index of that array. Inside of the function or "the purpose of" of the function is to return a string with template literals accessing the information we recieve with the parameters. Couple of things to note, ive found that the ` back ticks are the only way to us template literals so always remember to use them. another thing is remembering the syntax of the ${} to access the parameters. In this case i am telling the string i want you to make the argument a part of the string in the desired location of that string. the second part where i wrote ${arr[num].name is saying "the first argument "arr" at index "second parameter"'s name.IF THERE WAS NO KEY NAMED ".name" THIS WOULD NOT WORK. the computer wouldnt know what the hell im talking about.}
+*/
+
+
 
 function getArtistByIndex(arr, num) {
   // return `the artist at index 8 is Vincent Van Gogh`
@@ -244,24 +263,32 @@ Use get20s to do the following:
 ["Example","born","in","1901","and","died","in","1959","-","included","--","born","in","1889","and","died","in","1925","not","included"]
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
+
+
+/* Task 4 Notes:First of all .split does NOT care if it is comparing a number in a string or just a NUMBER number. This was the part i struggled with the most. So here we are making a function that takes in a parameter wich in this case would be an array. I know i want to return a new array so i made a new one called "painterDeathArray" and set it to empty knowing i will have to push information into it later. I then knew i had to loop through the array to find the specified crieria it was asking for (2nd part of task) so i wrote out a for loop that runs through the entire array that is provided in the function. inside of the for loop i am creating a new variable named "birthDeathDay" that will be a placeholder for the information that we get from splitting the "years" key at each index. .split is making a new array(in this case being saved as "birthDeathDay"),*/
+
+/*continued: what we put in the paranthesis of .split is the point where we want to seperate each item in the array that .split is making. The array that .split is making has to "live somewhere" if we want to access the information at some point, which is why we saved it into a variable called "birthDeathDay". Now we have an array containing everything in the "years" key in the objects of the array we passed in (painterArray) but without " - ". In this case they are strings of the birth year and death year of each painter.*/
+
+/*continued: I than knew i needed an "if statement" for the boolean value of whether or not the painter lived and died in the specified time frame. So my if statement is checking the array we made with the .split method(birthDeathDay) and knowing that each birth date will be the first index and the death date be the second index i was able to just say "if the birthday(string at index 0) is greater than or equal to 1900 AND the deathday (string at index 1)" */
+
 function get20s(painterArray){ //painters array
   // need a new array
-  const painterDeathArrayOrSomething = []
+  const painterDeathArray = []
   // find those artists
   for (let i=0; i<painterArray.length; i++) {
     let birthDeathDay = painterArray[i].years.split(" - ") //1900 - 1957 becomes 1900,1957
     // find out their birthday and their death day
     // have a place to use their birth/death day information
     if (birthDeathDay[0]>="1900" && birthDeathDay[1]<="2000") {
-      painterDeathArrayOrSomething.push(painterArray[i].name)
+      painterDeathArray.push(painterArray[i].name)
     }
+    console.log(birthDeathDay)
     // find out IF their birthday was after 1900 AND (&&) their deathday was before 2000
     //if both above are true, they will be added to the new information
   }
   //return the new information
-  return painterDeathArrayOrSomething
+  return painterDeathArray
 }
-
 // two rules: 
 // comment everything
 // console.log everything
