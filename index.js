@@ -269,7 +269,7 @@ If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 /*continued: what we put in the paranthesis of .split is the point where we want to seperate each item in the array that .split is making. The array that .split is making has to "live somewhere" if we want to access the information at some point, which is why we saved it into a variable called "birthDeathDay". Now we have an array containing everything in the "years" key in the objects of the array we passed in (painterArray) but without " - ". In this case they are strings of the birth year and death year of each painter.*/
 
-/*continued: I than knew i needed an "if statement" for the boolean value of whether or not the painter lived and died in the specified time frame. So my if statement is checking the array we made with the .split method(birthDeathDay) and knowing that each birth date will be the first index and the death date be the second index i was able to just say "if the birthday(string at index 0) is greater than or equal to 1900 AND the deathday (string at index 1)" */
+/*continued: I than knew i needed an "if statement" for the boolean value of whether or not the painter lived and died in the specified time frame. So my if statement is checking the array we made with the .split method(birthDeathDay) and knowing that each birth date will be the first index and the death date be the second index i was able to just say "if the birthday(string at index 0) is greater than or equal to 1900 AND the deathday (string at index 1) is less than or equal to 2000 than i wanted to push that specific objects .name key to the empty array i created at the top of my function." I finally made sure to return that new array i created. */
 
 function get20s(painterArray){ //painters array
   // need a new array
@@ -282,7 +282,6 @@ function get20s(painterArray){ //painters array
     if (birthDeathDay[0]>="1900" && birthDeathDay[1]<="2000") {
       painterDeathArray.push(painterArray[i].name)
     }
-    console.log(birthDeathDay)
     // find out IF their birthday was after 1900 AND (&&) their deathday was before 2000
     //if both above are true, they will be added to the new information
   }
@@ -301,6 +300,12 @@ function get20s(painterArray){ //painters array
  4. Return the length of the remaining dataset.
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
+
+/*Task 5 notes:I need to recieve two parameters for this function, one is an array and the other is the index number of that array. i knew from the 3rd part of the task that i wanted to use the .splice method which takes the 2nd parameter of the function which is the specified index position of the thing we want to be "splicing" the second thing we are passing into the .splice() method is HOW MANY things we want to remove. Since that is one, thats what i set it to.
+Finally i returned the array that was given to us with the first parameter of the function's new LENGTH */
+
+
+
 
 function removeArtist(arr,num){
    arr.splice(num,1);
@@ -324,6 +329,9 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
+/*Task 6 notes: This wanted me to take an a parameter which is an array and than add the information provided to that array at the end of it. This is done by simply using .push() with the information needing to be pushed passed into the push method. Finally i returned the new value of the array after the information was pushed. */
+
+
 function addArtist(arr){
   arr.push({ 
     id: 20,
@@ -346,12 +354,13 @@ Use lotsOfArt to do the following:
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
 function lotsOfArt(arr){
-  const paintArr = [];
-  for (let i = 0; i <= arr.length-1; i++) {
+  const busyPainters = []
+  for (let i = 0; i<arr.length; i++){
     if(arr[i].paintings > 100){
-      paintArr.push[arr[i].name]
+      busyPainters.push(arr[i].name)
     }
   }
+  return busyPainters
 }
 // console.log(paintArr)
 
