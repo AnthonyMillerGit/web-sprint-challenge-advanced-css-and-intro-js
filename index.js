@@ -230,6 +230,7 @@ console.log(artists[8])
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
 function getArtistByIndex(arr, num) {
+  // return `the artist at index 8 is Vincent Van Gogh`
   return `the artist at index ${num} is ${arr[num].name}`
 }  
 
@@ -239,15 +240,31 @@ function getArtistByIndex(arr, num) {
 Use get20s to do the following: 
 1. Receive an array
 2. Return a new array with names of artists who were born in and died in 20th century (1900-2000) 
-
-Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
+.split(" ")
+["Example","born","in","1901","and","died","in","1959","-","included","--","born","in","1889","and","died","in","1925","not","included"]
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(arr){
-  
+function get20s(painterArray){ //painters array
+  // need a new array
+  const painterDeathArrayOrSomething = []
+  // find those artists
+  for (let i=0; i<painterArray.length; i++) {
+    let birthDeathDay = painterArray[i].years.split(" - ") //1900 - 1957 becomes 1900,1957
+    // find out their birthday and their death day
+    // have a place to use their birth/death day information
+    if (birthDeathDay[0]>="1900" && birthDeathDay[1]<="2000") {
+      painterDeathArrayOrSomething.push(painterArray[i].name)
+    }
+    // find out IF their birthday was after 1900 AND (&&) their deathday was before 2000
+    //if both above are true, they will be added to the new information
+  }
+  //return the new information
+  return painterDeathArrayOrSomething
 }
 
-
+// two rules: 
+// comment everything
+// console.log everything
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
  Use removeArtist to do the following:
@@ -309,7 +326,7 @@ function lotsOfArt(arr){
     }
   }
 }
-console.log(paintArr)
+// console.log(paintArr)
 
 
 
